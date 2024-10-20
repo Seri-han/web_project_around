@@ -1,0 +1,12 @@
+.page {  
+    margin: auto;
+    font-family: "Inter";
+    background-color: #000;  
+    }
+    
+    
+    @media (max-width: 320px) {
+    .page {
+    width: 100%;
+    }    
+    }

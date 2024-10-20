@@ -3,27 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alrededor de los EE.UU.</title>
-    <link rel="stylesheet" href="styles/main.css">
+    <meta name="description" content="proyecto # 7">
+    <meta name="author" content="Sarah Handal">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Sprint 7, Seri-han">
+    <title>Around the U.S.</title>
+    <link rel="stylesheet" href="vendor/normalize.css">
+    <link rel="stylesheet" href="pages/index.css">
+    <link rel="shortcut icon" href="./favicon.ico">
 </head>
 <body>
-    <!-- Header -->
+   
+     <div class=" page">
+ <!-- Header -->
     <header class="header">
         <div class="header__logo">
-            <h1 class="header__title">Alrededor de los EE.UU.</h1>
+            <img
+          src="./img/Logo.png"
+          alt="Logo Around the U.S."
+          class="header__logo"
+        />
         </div>
-        <button class="profile__edit-btn">Editar Perfil</button>
     </header>
-
+ <!-- Main -->
     <main class="content">
-        <section class="cards">
-            <article class="card">
-                <img src="img/image1.jpg" alt="Lugar 1" class="card__image">
-                <div class="card__info">
-                    <h2 class="card__title">Lugar 1</h2>
-                    <button class="card__like-btn">♥</button>
+        <!-- Perfil -->
+        <section class="profile">
+            <div class="profile__container">
+            <img
+            src="./img/profile_pic.jpg"
+            alt="foto de perfil"
+            class="profile__avatar"
+            >
+            <div class="profile__info">
+                <h1 class="profile__info-name">Sarah Handal</h1>
+                <p class="profile__info-title">Explorer</p>
+                <button class="profile__info-edit-btn">
+                    <img
+                    src="./img/edit.png"
+                    alt="edit button"
+                    >
+                </button>
+            </div>
+                <button class="profile__add-btn">+</button>
+            </div>
+        </section>
+
+
+        <section class="elements">
+            <!-- element 1 -->
+            <div class="element">
+            <div class="elements__trash"></div>
+                <img src="img/card_image_forest.jpg" alt="valle de yosemite" class="element__image">
+                
+                    <h2 class="element__title">Valle de Yosemite</h2>
+                    <div class="element__like"></div>
                 </div>
-            </article>
+                            <!-- element 2 -->
+            <div class="element">
+                <div class="elements__trash"></div>
+                    <img src="img/card_image_lake-2.jpg" alt="Lago Louise" class="element__image">
+                    
+                        <h2 class="element__title">Lago Louise</h2>
+                        <div class="element__like"></div>
+                    </div>
+                                <!-- element 3 -->
+            <div class="element">
+                <div class="elements__trash"></div>
+                    <img src="img/card_image_smokey.jpg" alt="imagen de Montañas Calvas" class="element__image">
+                    
+                        <h2 class="element__title">Montañas Calvas</h2>
+                        <div class="element__like"></div>
+                    </div>
+                                <!-- element 4 -->
+            <div class="element">
+                <div class="elements__trash"></div>
+                    <img src="img/card_image_latemar.jpg" alt="imagen de latemar" class="element__image">
+                    
+                        <h2 class="element__title">Latemar</h2>
+                        <div class="element__like"></div>
+                    </div>
+                                <!-- element 5 -->
+            <div class="element">
+                <div class="elements__trash"></div>
+                    <img src="img/card_image_vanoise.jpg" alt="imagen de parque nacional de Vanoise" class="element__image">
+                    
+                        <h2 class="element__title">National Park of Vanoise</h2>
+                        <div class="element__like"></div>
+                    </div>
+                                <!-- element 6 -->
+            <div class="element">
+                <div class="elements__trash"></div>
+                    <img src="img/card_image_lake.jpg" alt="lago di Braies" class="element__image">
+                    
+                        <h2 class="element__title">Lago di Braies</h2>
+                        <div class="element__like"></div>
+                    </div>
         </section>
     </main>
 
@@ -39,6 +113,10 @@
         </div>
     </div>
 
+    <footer class="footer">
+        <p class="footer__text">2025 Around The U.S.</p>
+    </footer>
+</div>
     <script src="scripts/index.js"></script> 
 </body>
 </html>
