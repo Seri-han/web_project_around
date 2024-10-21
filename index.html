@@ -97,13 +97,22 @@
     </main>
 
     <!-- Modal Edit Profile -->
-    <div class="popup">
+    <div class="popup hidden" id="popupForm">
+        <button class="popup__close-btn">
+            <span class="close-icon" aria-hidden="true">×</span>
+        </button>s
         <div class="popup__container">
-            <button class="popup__close-btn">X</button>
+            
+            <h2 class="popup__title">Editar perfil</h2>
             <form class="popup__form">
-                <input type="text" class="popup__input" name="name" placeholder="Nombre">
-                <input type="text" class="popup__input" name="about" placeholder="Acerca de mí">
-                <button type="submit" class="popup__save-btn">Guardar</button>
+                <!-- <label for="name" class="popup__label">Nombre</label> -->
+                <input type="text" class="popup__input"  id="name" name="name" placeholder="Nombre">
+
+                <!-- <label for="about" class="popup__label">Acerca de mi</label> -->
+                <input type="text" class="popup__input" id='about' name="about" placeholder="Acerca de mí">
+
+
+                <button type="submit" class="popup__submit">Guardar</button>
             </form>
         </div>
     </div>
