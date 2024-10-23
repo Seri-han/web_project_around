@@ -30,7 +30,7 @@
     padding-top: 22px;
 }
 
-.profile__info-name {
+.profile__info-header {
 font-family: Inter;
 font-size: 2.625rem;
 font-weight: 500;
@@ -108,7 +108,7 @@ color: black;
         margin-top: 16px;
     }
 
-    .profile__info-name {
+    .profile__info-header {
         font-size: 1.5rem;
         text-align: center;
     }

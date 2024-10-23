@@ -43,7 +43,7 @@
 }
 
 .element__like {
-    background-image: url(../img/heart_icon.png);
+    background-image: url(../images/heart_icon.png);
     background-size: contain;
     width: 21px;
     height: 19px;

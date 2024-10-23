@@ -1,30 +1,35 @@
-// Busquemos el formulario en el DOM
-let formElement = // Utiliza el método querySelector()
+let popupForm = document.querySelector('#popupForm');
+let editButton = document.querySelector('.profile__info-edit-btn');
+let closeButton = document.querySelector('.popup__close-btn');
+let saveButton = document.querySelector('.popup__submit');
+let nameInput = document.querySelector('#name-input');
+let jobInput = document.querySelector('#job-input');
+let profileName = document.querySelector('.profile__info-header');
+let profileJob = document.querySelector('.profile__info-title');
 
-// Lo siguiente es el manipulador (handler) de entrega de formularios, aunque
-// no se enviará en ningún sitio todavía
-
-// Observa que el nombre de la función comienza con un verbo
-// y describe exactamente lo que hace la función
-function handleProfileFormSubmit(evt) {
-    // Esta línea impide que el navegador
-    // entregue el formulario en su forma predeterminada.
-    evt.preventDefault();
-    // Una vez hecho esto, podemos definir nuestra propia forma de entregar el formulario.
-    // Lo explicaremos todo con más detalle después.
-
-    // Busquemos los campos del formulario en el DOM
-    let nameInput = // Utiliza el método querySelector()
-    let jobInput = // Utiliza el método querySelector()
-
-    // Obtén los valores de cada campo desde la propiedad de valor correspondiente
-
-    // Selecciona los elementos donde se introducirán los valores de los campos
-
-    // Inserta nuevos valores utilizando el textContent
-    // propiedad del método querySelector()
+function openPopup(popup) {
+    popup.classList.add('popup_show');
+    nameInput.value = profileName.textContent; 
+    jobInput.value = profileJob.textContent;
 }
 
-// Conecta el manipulador (handler) al formulario:
-// se observará el evento de entrega
-formElement.addEventListener('submit', handleProfileFormSubmit);
+function closePopup(popup) {
+    popup.classList.remove('popup_show');
+}
+
+editButton.addEventListener('click', function () {
+    openPopup(popupForm);
+});
+
+closeButton.addEventListener('click', function () {
+    closePopup(popupForm);
+});
+
+popupForm.addEventListener('submit', function(evt) {
+    evt.preventDefault();
+    let nameValue = nameInput.value;
+    let jobValue = jobInput.value; 
+    profileName.textContent = nameValue;
+    profileJob.textContent = jobValue;
+    closePopup(popupForm);  
+});
