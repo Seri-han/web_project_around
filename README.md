@@ -4,8 +4,11 @@ Proyecto de diseño responsivo se trabajo en resoluciones diferentes para lograr
 Tecnologias Utilizadas
 
 Diseño responsivo Figma HTML CSS JavaScript GIT avanzado Metodología BEM Grid form funtions
+
 Liga al proyecto de Figma
 
 https://www.figma.com/file/mUgu8OSHWE0M6p6vfwmdu9/Sprint-4%3A-Around-The-U.S.-%2F-desktop-%2B-mobile?type=design&node-id=0-1&mode=design&t=omoJIlRF922CtUB4-0
+
 Link a pages
-    
+https://seri-han.github.io/web_project_around/
+
