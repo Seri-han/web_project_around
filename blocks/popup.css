@@ -9,7 +9,7 @@
 }
 
 .popup_show {
-    display: block;
+    display: flex;
 }
 
 .popup__container {
@@ -110,3 +110,27 @@
         right: 0rem;
     }
 }
+
+.popup__container-card {
+    position: relative;
+    min-width: 250px;
+    display: block;
+    background-color: transparent;
+    z-index: 99;
+    margin-inline: auto;
+    margin-top: 90px;
+  }
+  .popup__image-container {
+    position: relative;
+    max-width: 75vw;
+    max-height: 75vh;
+  }
+  .popup__image-title {
+    font-family: Inter;
+font-size: 12px;
+font-weight: 400;
+line-height: 14.52px;
+text-align: left;
+    margin: 0;
+    margin-top: 10px;
+  }
