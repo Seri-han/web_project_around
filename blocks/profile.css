@@ -38,6 +38,9 @@ line-height: 1;
 text-align: left;
 grid-area: a;
 margin: 0;
+text-overflow: ellipsis;
+  overflow: hidden;
+  text-wrap: nowrap;
 }
 
 .profile__info-title {

@@ -66,6 +66,10 @@ function createCard(title, imageLink) {
     <h2 class="element__title">${title}</h2>
     <div class="element__like"></div>
   `;
+
+  cardElement.querySelector('.element__trash').addEventListener('click', (e) => {
+    cardElement.remove();
+  });
   cardContainer.prepend(cardElement); 
 }
 
