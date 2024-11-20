@@ -127,3 +127,21 @@ document.querySelectorAll(".element__image").forEach(image => {
 popupImageCard.querySelector(".popup__close-btn").addEventListener("click", function () {
   closePopup(popupImageCard);
 });
+
+//
+
+function closePopupOnOverlay(evt) {
+  if (evt.target.classList.contains('popup_show')) {
+    closePopup(evt.target)
+  }
+}
+
+function closePopupOnEsc(evt) {
+  if (evt.key === 'Escape') {
+    const activePopup = document.querySelector('.popup_show');
+    if(activePopup) closePopup(activePopup);
+  }
+}
+
+document.addEventListener('mousedown', closePopupOnOverlay);
+document.addEventListener('keydown', closePopupOnEsc);
