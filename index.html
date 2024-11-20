@@ -175,62 +175,84 @@
           <div>
             <h2 class="popup__title">Editar perfil</h2>
             <form class="popup__form">
-              <!-- <label for="name" class="popup__label">Nombre</label> -->
+              
               <input
                 type="text"
                 class="popup__input profile__info-name"
                 id="name-input"
                 name="name"
                 placeholder="Nombre"
+                minlength="2"
+                maxlength="40"
+                required
               />
+              <span class="form__input-error name-input-error">
+                Por favor, rellena este campo.
+              </span>
 
-              <!-- <label for="about" class="popup__label">Acerca de mi</label> -->
+              
               <input
                 type="text"
                 class="popup__input profile__input-job"
                 id="job-input"
                 name="about"
                 placeholder="Acerca de mí"
+                minlength="2"
+                maxlength="200"
+                required
               />
-
-              <button type="submit" class="popup__submit">Guardar</button>
+              <span class="form__input-error job-input-error">
+                Por favor, rellena este campo.
+              </span>
+              <button type="submit" class="popup__submit popup__button_disabled">Guardar</button>
             </form>
           </div>
         </div>
       </div>
 
       <!-- Modal Edit Cards -->
-      <div class="popup" id="addCardPopup">
-        <div class="popup__container">
-          <button class="popup__close-btn">
-            <span class="close-icon" aria-hidden="true">×</span></button
-          >
-          <div>
-            <h2 class="popup__title">Nuevo Lugar</h2>
-            <form class="popup__form">
-              <!-- <label for="name" class="popup__label">title</label> -->
-              <input
-                type="text"
-                class="popup__input place__title"
-                id="place__title-input"
-                name="title"
-                placeholder="Titulo"
-              />
+<div class="popup" id="addCardPopup">
+  <div class="popup__container">
+    <button class="popup__close-btn">
+      <span class="close-icon" aria-hidden="true">×</span>
+    </button>
+    <div>
+      <h2 class="popup__title">Nuevo Lugar</h2>
+      <form class="popup__form" novalidate>
+        <input
+          type="text"
+          class="popup__input"
+          id="place__title-input"
+          name="title"
+          placeholder="Título"
+          minlength="2"
+          maxlength="40"
+          required
+        />
+        <span class="form__input-error place__title-input-error">Por favor, rellena este campo.</span>
 
-              <!-- <label for="about" class="popup__label">img</label> -->
-              <input
-                type="text"
-                class="popup__input place__link"
-                id="place__link-input"
-                name="place__link"
-                placeholder="Enlace de la imagen"
-              />
+        <input
+          type="url"
+          class="popup__input"
+          id="place__link-input"
+          name="link"
+          placeholder="Enlace de la imagen"
+          required
+        />
+        <span class="form__input-error place__link-input-error">Por favor, introduce una dirección web.</span>
 
-              <button type="submit" class="popup__submit">Crear</button>
-            </form>
-          </div>
-        </div>
-      </div>
+        <button
+          type="submit"
+          class="popup__submit popup__button_disabled"
+          disabled
+        >
+          Crear
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
 
       <!-- image modal -->
 
@@ -250,7 +272,7 @@
       </footer>
     </div>
     <script src="scripts/index.js"></script>
-    <script src="./scripts/validate.js" type="module"></script>
+    <script src="scripts/validate.js" type="module"></script>
 
   </body>
 </html>

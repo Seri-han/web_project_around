@@ -1,3 +1,5 @@
+
+
 let popupForm = document.querySelector("#popupForm");
 let editButton = document.querySelector(".profile__info-edit-btn");
 let nameInput = document.querySelector("#name-input");
@@ -9,6 +11,7 @@ let addCardPopup = document.querySelector("#addCardPopup");
 let addButton = document.querySelector(".profile__add-btn");
 let titleInput = document.querySelector("#place__title-input");
 let linkInput = document.querySelector("#place__link-input");
+
 
 function openPopup(popup) {
   popup.classList.add("popup_show");
@@ -145,3 +148,4 @@ function closePopupOnEsc(evt) {
 
 document.addEventListener('mousedown', closePopupOnOverlay);
 document.addEventListener('keydown', closePopupOnEsc);
+
