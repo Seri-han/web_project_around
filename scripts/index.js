@@ -1,6 +1,6 @@
 import { enableValidation, validateFormOnOpen } from "./validate.js";
 
-// Ejecutar validación global al inicio
+
 enableValidation();
 
 const popupForm = document.querySelector("#popupForm");
@@ -21,6 +21,7 @@ function openPopup(popup) {
     return;
   }
   popup.classList.add("popup_show");
+  document.addEventListener("keydown", handleEscClose); 
 
   if (popup.id === "popupForm") {
     const formElement = popup.querySelector(".popup__form");
@@ -28,25 +29,31 @@ function openPopup(popup) {
   }
 }
 
+
 function closePopup(popup) {
   popup.classList.remove("popup_show");
+  document.removeEventListener("keydown", handleEscClose);
 }
 
-// Listener para el botón de edición de perfil
+function handleEscClose(evt) {
+  if (evt.key === "Escape") {
+    const activePopup = document.querySelector(".popup_show");
+    if (activePopup) closePopup(activePopup);
+  }
+}
+
 editButton.addEventListener("click", () => {
   openPopup(popupForm);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 });
 
-// Listener para el botón de añadir tarjeta
 addButton.addEventListener("click", () => {
   openPopup(addCardPopup);
   titleInput.value = "";
   linkInput.value = "";
 });
 
-// Listeners para cerrar popups
 document.querySelectorAll(".popup__close-btn").forEach((button) => {
   button.addEventListener("click", (evt) => {
     const popup = evt.target.closest(".popup");
@@ -54,17 +61,8 @@ document.querySelectorAll(".popup__close-btn").forEach((button) => {
   });
 });
 
-// Cerrar popups al hacer clic en el overlay
 document.addEventListener("mousedown", (evt) => {
   if (evt.target.classList.contains("popup_show")) {
     closePopup(evt.target);
-  }
-});
-
-// Cerrar popups al presionar la tecla Escape
-document.addEventListener("keydown", (evt) => {
-  if (evt.key === "Escape") {
-    const activePopup = document.querySelector(".popup_show");
-    if (activePopup) closePopup(activePopup);
   }
 });
