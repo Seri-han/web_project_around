@@ -1,4 +1,4 @@
-import { enableValidation, validateFormOnOpen } from "./validate.js";
+import { enableValidation, validateFormOnOpen, toggleButtonState  } from "./validate.js";
 
 
 enableValidation();
@@ -75,6 +75,7 @@ addCardPopup.querySelector(".popup__form").addEventListener("submit", function (
   const imageValue = linkInput.value;
   createCard(titleValue, imageValue);
   closePopup(addCardPopup); 
+});
 
 popupForm.querySelector(".popup__form").addEventListener("submit", function (evt) {
   evt.preventDefault();
@@ -85,7 +86,7 @@ popupForm.querySelector(".popup__form").addEventListener("submit", function (evt
 
 function createCard(title, imageLink) {
   const cardContainer = document.querySelector('.elements');
-  const cardElement = document.querySelector('div');
+  const cardElement = document.createElement('div');
   cardElement.classList.add('element');
 
   cardElement.innerHTML = `
@@ -97,5 +98,41 @@ function createCard(title, imageLink) {
     <div class="element__like"></div>
   `;
 
+  cardElement.querySelector('.element__trash').addEventListener('click', (e) => {
+    cardElement.remove();
+  });
+
+  cardElement.querySelector('.element__like').addEventListener('click', (e) => {
+    const likeButton = e.currentTarget;
+    handleLikeButton(likeButton)
+  });
+
   cardContainer.prepend(cardElement);
+}
+
+const trashButtons = document.querySelectorAll('.element__trash');
+const likeButtons = document.querySelectorAll('.element__like');
+
+trashButtons.forEach(button => {
+  button.addEventListener('click', (e) => {
+    const element = e.target.closest('.element');
+    element.remove();
+  });
+});
+
+likeButtons.forEach(button => {
+  button.addEventListener('click', (e) => {
+   
+    const likeButton = e.currentTarget;
+    
+    handleLikeButton(likeButton);
+  });
+});
+
+function handleLikeButton(likeButton) {
+  if (likeButton.classList.contains('active')) {
+    likeButton.classList.remove('active');
+  } else {
+    likeButton.classList.add('active');
+  };
 }
