@@ -81,7 +81,7 @@ document.addEventListener('click', (event) => {
   if (event.target.classList.contains('popup_show')) {
     const activePopup = document.querySelector('.popup_show'); 
     if (activePopup) { 
-      activePopup.close(); 
+      activePopup.classList.remove('.popup_show');
     }
   }
 });
@@ -91,7 +91,7 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     const activePopup = document.querySelector('.popup_show');
     if (activePopup) {
-      activePopup.close(); 
+      activePopup.classList.remove('.popup_show');
     }
   }
 });
@@ -115,7 +115,6 @@ document.querySelectorAll('.element').forEach(element => {
   });
 });
 
-// ... (Rest of the like button handling code) ...
 
 
 
