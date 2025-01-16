@@ -6,6 +6,34 @@ import { closePopup } from "./utils.js";
 import PopupWithImage from './PopupWithImage.js';
 import PopupWithForm from './PopupWithForm.js';
 import UserInfo from './UserInfo.js';
+import Api from "./components/Api.js";
+import { config } from "./config.js";
+
+const api = new Api({
+  baseUrl: 'https://around-api.es.tripleten-services.com/v1',
+  headers: {
+    authorization: '"5e4a84e5-00a2-42ea-b914-3a4e397e0570",
+    'Content-Type': 'application/json'
+  }
+});
+
+//Obtener datos del usuarios y actualizarlos
+
+api.getUserInfo().then((UserData) => {
+  document.querySelector('profile__info-header').textContent = UserData.name;
+  document.querySelector('profile__info-title').textContent = UserData.about;
+  document.querySelector('profile__avatar').src = UserData.avatar;
+}).catch((err) => console.log(err));
+
+//obtener tarjetas iniciales
+api.getInitialCards().then((cards) => {
+  cards.forEach((card) => {
+    const cardElement = new Card(card, '#card-template').generate();
+    document.querySelector('.cards').prepend(cardElement);
+    });
+  });
+}.catch((err) => console.log(err));
+
 
 const popupForm = document.querySelector("#popupForm");
 const addCardPopup = document.querySelector("#addCardPopup");
