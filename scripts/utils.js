@@ -40,5 +40,9 @@ function closePopupOnEsc(evt) {
   }
 }
 
+ const avatarInput = document.querySelector("#avatar");
+ const avatarButton = document.querySelector("#update_img-avatar");
+ const popupAvatar = document.querySelector(".popup_avatar");
+const profileAvatar = document.querySelector(".profile__avatar");
 
-export { openPopup, closePopup, handleEscClose, closePopupOnOverlay, closePopupOnEsc };
+export { openPopup, closePopup, handleEscClose, closePopupOnOverlay, closePopupOnEsc, avatarInput, avatarButton, profileAvatar, popupAvatar };

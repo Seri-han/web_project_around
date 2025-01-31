@@ -6,9 +6,13 @@ class FormValidator {
   }
 
   _showInputError(inputElement, errorMessage) {
-    const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
+    const errorElement = this._formElement.querySelector(
+      `.${inputElement.id}-error`
+    );
     if (!errorElement) {
-      console.error(`No se encontró el mensaje de error para ${inputElement.id}`);
+      console.error(
+        `No se encontró el mensaje de error para ${inputElement.id}`
+      );
       return;
     }
     inputElement.classList.add("popup__input_type_error");
@@ -17,9 +21,13 @@ class FormValidator {
   }
 
   _hideInputError(inputElement) {
-    const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
+    const errorElement = this._formElement.querySelector(
+      `.${inputElement.id}-error`
+    );
     if (!errorElement) {
-      console.error(`No se encontró el mensaje de error para ${inputElement.id}`);
+      console.error(
+        `No se encontró el mensaje de error para ${inputElement.id}`
+      );
       return;
     }
     inputElement.classList.remove("popup__input_type_error");
@@ -60,6 +68,11 @@ class FormValidator {
   }
 
   enableValidation() {
+    // Skip validation for specific forms, like confirmation popup
+    if (this._formElement.classList.contains("no-validation")) {
+      return;
+    }
+
     this._formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
