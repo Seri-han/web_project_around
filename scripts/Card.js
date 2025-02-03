@@ -22,8 +22,6 @@ class Card {
       cardElement // implement correct delete
       .querySelector(".element__trash")
       .addEventListener("click", () => {
-        // cardElement.remove();
-        console.log('this', this.popupDeleteCard());
         this.popupDeleteCard(cardElement);
       });
 

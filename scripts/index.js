@@ -159,7 +159,7 @@ addCardPopup
     evt.preventDefault();
     const titleValue = titleInput.value;
     const imageValue = linkInput.value;
-    const card = new Card(titleValue, imageValue, popupDeleteCard.open);
+    const card = new Card(titleValue, imageValue, (card) => popupDeleteCard.open(card));
     const cardElement = card.createCard();
     document.querySelector(".elements").prepend(cardElement);
     closePopup(addCardPopup);
