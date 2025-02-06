@@ -1,22 +1,30 @@
-import { FormValidator } from "./FormValidator.js";
-import { Card } from "./Card.js";
-import Section from "./Section.js";
-import PopupWithImage from "./PopupWithImage.js";
-import PopupWithForm from "./PopupWithForm.js";
-import UserInfo from "./UserInfo.js";
-import { api } from "./Api.js";
-import PopupWithConfirmation from "./PopupWithConfirmation.js";
+import { FormValidator } from "../scripts/FormValidator.js";
+import { Card } from "../scripts/Card.js";
+import Section from "../scripts/Section.js";
+import PopupWithImage from "../scripts/PopupWithImage.js";
+import PopupWithForm from "../scripts/PopupWithForm.js";
+import UserInfo from "../scripts/UserInfo.js";
+import { api } from "../scripts/Api.js";
+import PopupWithConfirmation from "../scripts/PopupWithConfirmation.js";
 import {
   avatarButton,
   avatarInput,
   profileAvatar,
   closePopup,
   popupAvatar,
-} from "./utils.js";
-import Popup from "./Popup.js";
+} from "../scripts/utils.js";
+import Popup from "../scripts/Popup.js";
+import '../pages/index.css';
+import '../vendor/normalize.css'
+
 
 let currentUser = null;
 let cardList = null;
+
+// Select the popup element
+const popupDeleteCard = new PopupWithConfirmation({
+  popupSelector: "#popupConfirmation", // Replace with your popup's CSS selector
+});
 
 // Obtener datos del usuarios y actualizarlos
 api
@@ -40,6 +48,8 @@ api
       console.error("Las tarjetas iniciales no son válidas.");
       return;
     }
+    console.log("ASDASDAS");
+    console.log(cards);
 
     const cardList = new Section(
       {
@@ -140,7 +150,7 @@ const cardsContainer = document.querySelector(".elements");
 
 const addCardPopupInstance = new PopupWithForm(addCardPopup, (formData) => {
   const { title, link } = formData;
-  const newCard = new Card(title, link);
+  const newCard = new Card(title, link, (card) => popupDeleteCard.open(card));
   cardsSection.addItem(newCard);
 });
 
@@ -148,10 +158,7 @@ addButton.addEventListener("click", () => {
   addCardPopupInstance.open();
 });
 
-// Select the popup element
-const popupDeleteCard = new PopupWithConfirmation({
-  popupSelector: "#popupConfirmation", // Replace with your popup's CSS selector
-});
+
 
 addCardPopup
   .querySelector(".popup__form")

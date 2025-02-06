@@ -7,6 +7,7 @@ export class Api {
     }
   
     _handleResponse(res) {
+      console.log("HERE");
       if (res.ok) {
         return res.json();
       }

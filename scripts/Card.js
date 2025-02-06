@@ -1,10 +1,14 @@
+
+
 class Card {
   constructor(title, imageLink, popupDeleteCard) {
     this.title = title;
     this.imageLink = imageLink;
     // this.currentUser = currentUser;
     this.popupDeleteCard = popupDeleteCard;
+    console.log(this.popupDeleteCard)
   }
+
 
   createCard() {
     const cardElement = document.createElement("div");
