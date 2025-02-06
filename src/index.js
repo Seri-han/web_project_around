@@ -116,26 +116,36 @@ const editProfilePopup = new PopupWithForm(popupForm, (formData) => {
   userInfo.setUserInfo({ name, job });
 });
 
-
+console.log('Avatar button:', avatarButton);
 
 //avatar update
-const avatarUpdate = new PopupWithForm({
-  popupSelector: popupAvatar,
-  handleFormSubmit: (inputValue) => {
-    if (inputValue.avatar !== "") {
-      return api.updateAvatarProfile(inputValue.avatar).then((user) => {
-        profileAvatar.src = inputValue.avatar;
+
+const avatarPopup = new PopupWithForm(popupAvatar, (formData) => {
+  if (formData.avatar) {
+    api.updateAvatarProfile(formData.avatar)
+      .then((user) => {
+        profileAvatar.src = formData.avatar;
+        avatarPopup.close();
+      })
+      .catch((err) => {
+        console.error("Error al actualizar el avatar:", err);
+      })
+      .finally(() => {
+        avatarPopup.loading(false);
       });
-    }
-  },
+  }
 });
+
 
 avatarButton.addEventListener("click", () => {
-  avatarUpdate.open();
-  avatarInput.value = profileAvatar.src;
+  const formValidator = new FormValidator(popupAvatar.querySelector('.popup__form'));
+  formValidator.enableValidation();
+  console.log('Avatar button clicked');
+  avatarPopup.open();
 });
 
-avatarUpdate.setEventListeners();
+
+avatarPopup.setEventListeners();
 
 //
 

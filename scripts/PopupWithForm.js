@@ -18,6 +18,14 @@ export default class PopupWithForm extends Popup {
     return formData;
   }
 
+  loading(isLoading) {
+    if (isLoading) {
+      this._submitButton.textContent = 'Guardando...';
+    } else {
+      this._submitButton.textContent = 'Guardar';
+    }
+  }
+
   setEventListeners() {
     // super.setEventListeners();
     this._formElement.addEventListener("submit", (evt) => {
