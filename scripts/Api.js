@@ -20,7 +20,7 @@ export class Api {
         headers: this._headers,
       }).then(this._handleResponse);
     }
-  
+
     getInitialCards() {
       return fetch(`${this._baseUrl}/cards`, {
         method: "GET",

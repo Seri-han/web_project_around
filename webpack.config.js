@@ -1,47 +1,49 @@
+const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
-    entry: "./src/index.js",  // Ruta de entrada a tu archivo JS
-    output: {
-      filename: "bundle.js",  // Salida del archivo JS
-      path: path.resolve(__dirname, "dist"),  // Ruta de salida
-    },
-    mode: "development",
-    devServer: {
-      static: path.join(__dirname, "dist"),
-      open: true,
-    },
-    module: {
-      rules: [
-        {
-          test: /\.js$/,
-          exclude: /node_modules/,
-          use: "babel-loader",  // Para procesar JS
+  mode: 'development',
+  entry: './src/index.js',
+  output: {
+    filename: 'index.js',  // Genera un archivo index.js (según tu configuración)
+    path: path.resolve(__dirname, 'dist'),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
         },
-        {
-          test: /\.css$/,
-          use: ["style-loader", "css-loader"],  // Para procesar CSS
-        },
-        {
-          test: /\.html$/,
-          use: "html-loader",  // Para procesar HTML
-        },
-        {
-          test: /\.(png|jpg|jpeg|gif|svg)$/,  // Para procesar imágenes
-          use: [
-            {
-              loader: "file-loader",
-              options: {
-                name: "[name].[ext]",  // Mantener el nombre original del archivo
-                outputPath: "assets/images/",  // Coloca las imágenes en la carpeta 'assets/images' dentro de 'dist'
-              },
-            },
-          ],
-        },
-      ],
-    },
-    plugins: [
-      new HtmlWebpackPlugin({
-        template: "./src/index.html",  // Usar el archivo HTML como plantilla
-      }),
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
-  };
-  
+  },
+  devServer: {
+    static: path.join(__dirname, 'dist'),
+    hot: true,
+    historyApiFallback: true,
+    open: true,
+    port: 8080,
+    headers: {
+      'Content-Security-Policy': "default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:;"
+    },
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: './images', to: 'images' },
+        { from: './vendor', to: 'vendor' },
+        { from: './pages', to: 'pages' },
+      ],
+    }),
+  ],
+};
