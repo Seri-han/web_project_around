@@ -1,36 +1,37 @@
-import Popup from "./Popup.js";
+import { Popup } from "./Popup.js";
+export class PopupWithConfirmation extends Popup {
+  constructor(popupSelector, handleFormSubmit) {
+    super(popupSelector);
+    this._handleFormSubmit = handleFormSubmit;
+    this._form = this._popup.querySelector(".form");
+    this._inputList = this._form
+      ? this._form.querySelectorAll(".form__input")
+      : [];
+    this._submitButton = this._form
+      ? this._form.querySelector(".form__submit")
+      : null;
 
-export default class PopupWithConfirmation extends Popup {
-  constructor({ popupSelector }) {
-    const popupElement = document.querySelector(popupSelector);
-    super(popupElement);
-    this._formElement = document.querySelector("#form__button-delete");
-    this._handleConfirm = null;
+    if (!this._submitButton) {
+      console.error(
+        `No se encontró el botón de envío en el popup: ${popupSelector}`
+      );
+      return;
+    }
+
+    this._submitButtonText = this._submitButton.textContent;
   }
 
-  open(card) {
-    const saveButton = this._popupElement.querySelector(".popup__save-button");
-
+  open(handleConfirm) {
     super.open();
-
-    saveButton.classList.remove("popup__button_disabled");
-    saveButton.disabled = false;
-    saveButton.addEventListener("click", () => {
-      card.remove();
-      super.close();
-    });
-
-    this._card = card; // Store the callback
+    this._handleConfirm = handleConfirm;
   }
 
-  setEventListener() {
-    // super.setEventListener();
-    this._popupElement.addEventListener("click", () => {
-      // this._handleDeleteSubmit();
-      // this.close();
-
+  setEventListeners() {
+    super.setEventListeners();
+    this._submitButton.addEventListener("click", (event) => {
+      event.preventDefault();
       if (this._handleConfirm) {
-        this._handleConfirm(); // Execute the callback
+        this._handleConfirm();
         this.close();
       }
     });

@@ -9,6 +9,13 @@ Liga al proyecto de Figma
 
 https://www.figma.com/file/mUgu8OSHWE0M6p6vfwmdu9/Sprint-4%3A-Around-The-U.S.-%2F-desktop-%2B-mobile?type=design&node-id=0-1&mode=design&t=omoJIlRF922CtUB4-0
 
+Instrucciones de Uso
+
+    Clona el repositorio.
+    Abre los archivos js, html, css en tu navegador para explorar PROJECT AROUND.
+    Disfruta de la experiencia inmersiva y mira como se desarrollo el proyecto.
+
+
 Link a pages
 https://seri-han.github.io/web_project_around/
 

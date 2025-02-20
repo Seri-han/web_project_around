@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project around</title>
+    <meta name="author" content="Sarah Handal" />
+    <meta name="description" content="Project around" />
+    <meta
+      name="keywords"
+      content="proyecto, html, css, java script, popup, modal, poo, api"
+    />
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <img
+          src="./images/logo.png"
+          alt="Logo del proyecto"
+          class="header__logo"
+        />
+      </header>
+      <section class="profile">
+        <div class="profile__avatar-container">
+          <img class="profile__avatar" src=" " alt="Avatar" />
+          <button class="profile__edit-avatar" aria-label="Editar Avatar">
+            <img
+              src="./images/edit_avatar.png"
+              alt="Botón para editar Avatar"
+            />
+          </button>
+        </div>
+        <div class="profile__content">
+          <div class="profile__info">
+            <p class="profile__name"></p>
+            <p class="profile__hobbie"></p>
+          </div>
+          <button class="profile__edit-button" aria-label="Editar perfil">
+            <img
+              src="./images/Edit-Button.png"
+              alt="Botón para editar perfil"
+            />
+          </button>
+        </div>
+        <button class="profile__add-button" aria-label="Agregar nueva imagen">
+          <img
+            src="./images/Add-Button.png"
+            alt="Botón para agregar nueva imagen"
+          />
+        </button>
+      </section>
+      <main class="main">
+        <div class="elements__container"></div>
+        <!-- Plantilla de card-->
+        <template class="template__card" id="template__card">
+          <div class="element">
+            <button class="element__photo-trash"></button>
+            <img src="" alt="" class="element__photo-link" />
+            <div class="element__info">
+              <h2 class="element__photo-name"></h2>
+              <button class="element__photo-like"></button>
+            </div>
+          </div>
+        </template>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">2024 Sarah Handal</p>
+      </footer>
+    </div>
+    <!-- Agrandar una carta-->
+    <div class="popup" id="popup-show-card">
+      <div class="popup__overlay"></div>
+      <div class="popup__photo-content">
+        <img
+          class="popup__close"
+          src="./images/Close Icon.png"
+          alt="boton para cerrar"
+          id="popup-close-card"
+          required
+        />
+        <img src=" " alt="" class="popup__photo-link" />
+        <h3 class="popup__photo-name"></h3>
+      </div>
+    </div>
+    <!-- Insertar una carta-->
+    <div class="popup" id="popup-add-card">
+      <div class="popup__overlay"></div>
+      <form class="form popup__form" id="form-addCard" novalidate>
+        <img
+          class="popup__close"
+          src="./images/Close Icon.png"
+          alt="boton para cerrar"
+          id="close-form"
+          required
+        />
+        <h2 class="form__title">Nuevo Lugar</h2>
+        <input
+          class="form__input"
+          type="text"
+          id="input-card-name"
+          placeholder="Titulo"
+          minlength="2"
+          maxlength="30"
+          name="name"
+          required
+        />
+        <span class="input-error input-card-name-error"></span>
+        <input
+          class="form__input"
+          type="url"
+          id="input-card-link"
+          placeholder="Enlace a la imagen"
+          name="link"
+          required
+        />
+        <span class="input-error input-card-link-error"></span>
+        <button type="submit" class="form__submit" disabled>Crear</button>
+      </form>
+    </div>
+    <!-- Modificar nombre y hobbie-->
+    <div class="popup" id="popup-profile">
+      <div class="popup__overlay"></div>
+      <form class="form popup__form" id="form-profile" novalidate>
+        <img
+          class="popup__close"
+          src="./images/Close Icon.png"
+          alt="boton para cerrar"
+          id="close-profile"
+        />
+        <h2 class="form__title">Editar perfil</h2>
+        <input
+          type="text"
+          class="form__input"
+          id="input-name"
+          name="name"
+          placeholder="Nombre"
+          minlength="2"
+          maxlength="40"
+          required
+        />
+        <span class="input-error input-name-error"></span>
+        <input
+          type="text"
+          class="form__input"
+          id="input-hobbie"
+          name="hobbie"
+          placeholder="Acerca de mí"
+          minlength="2"
+          maxlength="200"
+          required
+        />
+        <span class="input-error input-hobbie-error"></span>
+        <button type="submit" class="form__submit" disabled>Guardar</button>
+      </form>
+    </div>
+    <!-- Ventana emergente de eliminar-->
+    <div class="popup" id="popup-delete">
+      <div class="popup__overlay"></div>
+      <form class="form popup__form" id="form-delete" novalidate>
+        <img
+          class="popup__close"
+          src="./images/Close Icon.png"
+          alt="Cerrar"
+          id="popup__close-delete"
+        />
+        <p class="form__title">¿Estás seguro/a?</p>
+        <span class="input-error input-card-error"></span>
+        <button type="submit" class="form__submit form__delete">Si</button>
+      </form>
+    </div>
+
+    <!-- Editar foto de avatar-->
+    <div class="popup" id="popup-avatar">
+      <div class="popup__overlay"></div>
+      <form class="form popup__form" id="form-avatar" novalidate>
+        <img
+          class="popup__close"
+          src="./images/Close Icon.png"
+          alt="Cerrar"
+          id="popup__close-avatar"
+        />
+        <h2 class="form__title">Cambiar foto de perfil</h2>
+        <input
+          type="url"
+          class="form__input"
+          id="input-avatar-url"
+          name="avatar"
+          placeholder="URL de la nueva foto"
+          required
+        />
+        <span class="input-error input-avatar-error"></span>
+        <button type="submit" class="form__submit">Guardar</button>
+      </form>
+    </div>
+    <script src="./pages/index.js" type="module"></script>
+  </body>
+</html>
