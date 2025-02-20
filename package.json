@@ -1,0 +1,19 @@
+{
+    "name": "web_project_around",
+    "version": "0.0.1",
+    "description": "Educatio",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "predeploy": "npm run build",
+      "deploy": "gh-pages -d dist"
+    },
+    "author": "Sarah Handal",
+    "license": "ISC",
+    "dependencies": {
+      "jquery": "^3.7.1"
+    },
+    "devDependencies": {
+      "gh-pages": "^6.3.0"
+    }
+  }
